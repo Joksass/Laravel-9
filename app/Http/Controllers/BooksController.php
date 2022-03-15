@@ -15,8 +15,12 @@ class BooksController extends Controller
      */
     public function index()
     {
-        $books = Books::all();
-        return view('books', ['books' => $books]);
+        /*$books = Books::all();
+        return view('books', ['books' => $books]);*/
+        $books = Books::latest()->paginate(5);
+
+        return view('books',compact('books'))
+            ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
     /**

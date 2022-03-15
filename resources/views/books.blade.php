@@ -39,5 +39,6 @@
   </tbody>
 </table>
 
+{!! $books->links() !!}
 </body>
 </html>

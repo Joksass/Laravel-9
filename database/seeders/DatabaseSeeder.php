@@ -16,6 +16,9 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
         //\App\Models\Prekes::factory(100)->create();
+        /*$this->call([
+            MiestaiSeeder::class
+        ]);*/
         \App\Models\Books::factory(100)->create();
     }
 }

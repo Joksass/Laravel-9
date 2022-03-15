@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Books;
 use App\Http\Requests\StoreBooksRequest;
 use App\Http\Requests\UpdateBooksRequest;
+use Illuminate\Support\Facades\DB;
 
 class BooksController extends Controller
 {
@@ -17,10 +18,14 @@ class BooksController extends Controller
     {
         /*$books = Books::all();
         return view('books', ['books' => $books]);*/
-        $books = Books::latest()->paginate(5);
+        $books = Books::latest()->orderby('id','asc')->paginate(10);
 
         return view('books',compact('books'))
-            ->with('i', (request()->input('page', 1) - 1) * 5);
+            ->with('i', (request()->input('page', 1) - 1) * 10);
+
+            /*return view('books', [
+                'books' => DB::table('books')->paginate(15)
+            ]);*/
     }
 
     /**

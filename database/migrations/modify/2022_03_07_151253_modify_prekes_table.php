@@ -13,12 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('prekes', function (Blueprint $table) {
+        /*Schema::table('prekes', function (Blueprint $table) {
             $table->integer('nuolaida');
             $table->renameColumn('aprasymas', 'apie');
             $table->dropColumn('svoris');
 
-        });
+        });*/
     }
 
     /**
@@ -28,10 +28,10 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('prekes', function (Blueprint $table) {
+        /*Schema::table('prekes', function (Blueprint $table) {
             $table->integer('svoris')->after('kaina');
             $table->renameColumn('apie', 'aprasymas');
             $table->dropColumn('nuolaida');
-        });
+        });*/
     }
 };

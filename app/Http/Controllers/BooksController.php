@@ -6,6 +6,7 @@ use App\Models\Books;
 use App\Http\Requests\StoreBooksRequest;
 use App\Http\Requests\UpdateBooksRequest;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
 
 class BooksController extends Controller
 {
@@ -18,9 +19,9 @@ class BooksController extends Controller
     {
         /*$books = Books::all();
         return view('books', ['books' => $books]);*/
-        $books = Books::latest()->orderby('id','asc')->paginate(10);
+        $books = Books::latest()->paginate(10);
 
-        return view('books',compact('books'))
+        return view('books.index',compact('books'))
             ->with('i', (request()->input('page', 1) - 1) * 10);
 
             /*return view('books', [
@@ -35,7 +36,7 @@ class BooksController extends Controller
      */
     public function create()
     {
-        //
+        return view('books.create');
     }
 
     /**
@@ -44,9 +45,19 @@ class BooksController extends Controller
      * @param  \App\Http\Requests\StoreBooksRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreBooksRequest $request)
+    public function store(Request $request)
     {
-        //
+        $request->validate([
+            'Pavadinimas' => 'required',
+            'Autorius' => 'required',
+            'Isleista' => 'required',
+            'Aprasymas' => 'required',
+        ]);
+
+        Books::create($request->all());
+
+        return redirect()->route('books.index')
+                        ->with('success','Knyga pridėta sėkmingai.');
     }
 
     /**
@@ -55,9 +66,9 @@ class BooksController extends Controller
      * @param  \App\Models\Books  $books
      * @return \Illuminate\Http\Response
      */
-    public function show(Books $books)
+    public function show(Books $book)
     {
-        //
+        return view('books.show',compact('book'));
     }
 
     /**
@@ -66,9 +77,9 @@ class BooksController extends Controller
      * @param  \App\Models\Books  $books
      * @return \Illuminate\Http\Response
      */
-    public function edit(Books $books)
+    public function edit(Books $book)
     {
-        //
+        return view('books.edit',compact('book'));
     }
 
     /**
@@ -78,9 +89,19 @@ class BooksController extends Controller
      * @param  \App\Models\Books  $books
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateBooksRequest $request, Books $books)
+    public function update(Request $request, Books $book)
     {
-        //
+        $request->validate([
+            'Pavadinimas' => 'required',
+            'Autorius' => 'required',
+            'Isleista' => 'required',
+            'Aprasymas' => 'required',
+        ]);
+
+        $book->update($request->all());
+
+        return redirect()->route('books.index')
+                        ->with('success','Knyga atnaujinta sėkmingai');
     }
 
     /**
@@ -89,8 +110,11 @@ class BooksController extends Controller
      * @param  \App\Models\Books  $books
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Books $books)
+    public function destroy(Books $book)
     {
-        //
+        $book->delete();
+
+        return redirect()->route('books.index')
+                        ->with('success','Knyga sėkmingai ištrinta');
     }
 }

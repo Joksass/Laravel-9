@@ -16,25 +16,25 @@
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Pavadinimas:</strong>
+                <strong>{{ __('Book') }}:</strong>
                 {{ $book->Pavadinimas }}
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Autorius:</strong>
+                <strong>{{ __('Author') }}:</strong>
                 {{ $book->Autorius }}
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Išleista:</strong>
+                <strong>{{ __('Release Date') }}:</strong>
                 {{ $book->Isleista }}
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Aprašymas:</strong>
+                <strong>{{ __('Description') }}:</strong>
                 {{ $book->Aprasymas }}
             </div>
         </div>

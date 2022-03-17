@@ -22,10 +22,10 @@
     <table class="table table-bordered">
         <tr>
             <th>#</th>
-            <th>Pavadinimas</th>
-            <th>Autorius</th>
-            <th>Išleista</th>
-            <th>Aprašymas</th>
+            <th>{{ __('Book') }}</th>
+            <th>{{ __('Author') }}</th>
+            <th>{{ __('Release Date') }}</th>
+            <th>{{ __('Description') }}</th>
             <th width="280px">Veiksmai</th>
         </tr>
         @foreach ($books as $book)

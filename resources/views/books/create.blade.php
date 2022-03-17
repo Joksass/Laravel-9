@@ -29,26 +29,26 @@
      <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Pavadinimas:</strong>
-                <input type="text" name="Pavadinimas" class="form-control" placeholder="Pavadinimas">
+                <strong>{{ __('Book') }}</strong>
+                <input type="text" name="Pavadinimas" class="form-control" placeholder="{{ __('Book') }}">
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Autorius:</strong>
-                <textarea class="form-control" style="height:150px" name="Autorius" placeholder="Autorius"></textarea>
+                <strong>{{ __('Author') }}</strong>
+                <textarea class="form-control" style="height:150px" name="Autorius" placeholder="{{ __('Author') }}"></textarea>
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Išleista:</strong>
-                <input type="date" name="Isleista" class="form-control" placeholder="Isleista">
+                <strong>{{ __('Release Date') }}:</strong>
+                <input type="date" name="Isleista" class="form-control" placeholder="{{ __('Release Date') }}">
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Aprašymas:</strong>
-                <textarea class="form-control" style="height:150px" name="Aprasymas" placeholder="Aprašymas"></textarea>
+                <strong>{{ __('Description') }}:</strong>
+                <textarea class="form-control" style="height:150px" name="Aprasymas" placeholder="{{ __('Description') }}"></textarea>
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12 text-center">

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BooksController;
+use App\Http\Controllers\MailController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,5 +25,10 @@ Route::get('/dashboard', function () {
 
 Route::resource('/books', BooksController::class)->middleware(['auth']);
 
-require __DIR__.'/auth.php';
+//laišku siuntimas
+//Route::get('/mail',MailController::class);
+Route::get('mail', [MailController::class, 'plain_email'])->middleware(['auth']);
+Route::get('mail_html', [MailController::class, 'html_email'])->middleware(['auth']);
 
+
+require __DIR__.'/auth.php';

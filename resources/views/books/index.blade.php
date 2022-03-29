@@ -53,4 +53,4 @@
     </table>
 
     {!! $books->links() !!}
-    @endsection
+@endsection

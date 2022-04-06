@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BooksController;
 use App\Http\Controllers\MailController;
+use App\Http\Controllers\FilesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,5 +31,7 @@ Route::resource('/books', BooksController::class)->middleware(['auth']);
 Route::get('mail', [MailController::class, 'plain_email'])->middleware(['Admin']);
 Route::get('mail_html', [MailController::class, 'html_email'])->middleware(['Admin']);
 
+Route::get('file', [FilesController::class, 'create']); 
+Route::post('file', [FilesController::class, 'store']);
 
 require __DIR__.'/auth.php';

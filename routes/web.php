@@ -27,8 +27,8 @@ Route::resource('/books', BooksController::class)->middleware(['auth']);
 
 //laišku siuntimas
 //Route::get('/mail',MailController::class);
-Route::get('mail', [MailController::class, 'plain_email'])->middleware(['auth']);
-Route::get('mail_html', [MailController::class, 'html_email'])->middleware(['auth']);
+Route::get('mail', [MailController::class, 'plain_email'])->middleware(['Admin']);
+Route::get('mail_html', [MailController::class, 'html_email'])->middleware(['Admin']);
 
 
 require __DIR__.'/auth.php';

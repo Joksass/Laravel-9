@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\files;
-use App\Http\Requests\StorefilesRequest;
-use App\Http\Requests\UpdatefilesRequest;
+use Illuminate\Http\Request;
+
 
 class FilesController extends Controller
 {
@@ -34,7 +34,7 @@ class FilesController extends Controller
      * @param  \App\Http\Requests\StorefilesRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StorefilesRequest $request)
+    public function store(Request $request)
     {
         $this->validate($request, [
             'filenames' => 'required',
@@ -59,7 +59,7 @@ class FilesController extends Controller
                     $files = $name;  
 
                     //įrašas į db abie bylą
-                    $file= new File();
+                    $file= new Files();
                     $file->filenames = $files;
                     $file->filenames_orig = $file_old;
                     $file->save();
